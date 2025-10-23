@@ -21,7 +21,7 @@ double Product::getPrice() const {
 }
 
 int Product::getDaysUntilExpiration(const int now_date) const {
-    return getExprationDate() - getDaysInStock(now_date);
+    return getExpirationDate() - getDaysInStock(now_date);
 }
 
 int Product::getDaysInStock(const int now_date) const {
@@ -42,7 +42,9 @@ bool Product::reduceStock(int packs) {
 }
 
 void Product::addStock(int packs) {
-    current_stock_ += packs;
+    if (packs > 0) {
+        current_stock_ = std::min(current_stock_ + packs, max_stock_);
+    }
 }
 
 bool Product::needsDiscount(const int now_date) const {
@@ -51,7 +53,7 @@ bool Product::needsDiscount(const int now_date) const {
 }
 
 bool Product::isExpired(const int now_date) const {
-    return getDaysUntilExpiration(now_date) >= 0;
+    return getDaysUntilExpiration(now_date) > 0;
 }
 
 bool Product::isDiscounted() const {

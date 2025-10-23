@@ -40,7 +40,7 @@ class Product {
         return discount_;
     }
     // Геттер срока годности Товара
-    int getExprationDate() const {
+    int getExpirationDate() const {
         return expiration_date_;
     }
     // Геттер даты поступления Товара
