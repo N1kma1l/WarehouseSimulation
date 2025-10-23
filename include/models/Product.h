@@ -7,8 +7,9 @@
 class Product {
 
     public:
-    Product(const int id, const std::string& name, const int pack_size, 
-        const int max_stock, const double price, const int arrival_day);
+    Product(int id, std::string& name, int pack_size, 
+        int max_stock, double price, int expiration_date,
+        int arrival_day);
 
     // Геттер id Товара
     int getId() const {
@@ -49,9 +50,9 @@ class Product {
     // Геттер текущей цены товара
     double getPrice() const;
     // Геттер количества дней до окончания срока годности Товара
-    int getDaysUntilExpiration() const;
+    int getDaysUntilExpiration(const int now_date) const;
     // Геттер количества дней на складе Товара
-    int getDaysInStock() const;
+    int getDaysInStock(const int now_date) const;
     
     // Сеттер размера скидки на уценненый Товар (в процентах)
     void setDiscount(double percent);
@@ -61,13 +62,13 @@ class Product {
     void addStock(int packs);
 
     // Метод определения необходимости установления уценки на Товар
-    bool needsDiscount() const;
+    bool needsDiscount(const int now_date) const;
     // Метод для проверки просроченности Товара
-    bool isExpired() const;
+    bool isExpired(const int now_date) const;
     // Метод для проверки уценен ли Товар
     bool isDiscounted() const;
-    // Метод вывода вывода полной информации о Товаре
-    void printInfo() const;
+
+    friend std::ostream& operator<<(std::ostream& os, const Product& product);
 
     protected:
     int id_; // id Товара
