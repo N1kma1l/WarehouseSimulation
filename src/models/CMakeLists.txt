@@ -1,6 +1,8 @@
 add_library(WarehouseModels
     Product.cpp
     Order.cpp
+    Store.cpp
+    Supplier.cpp
 )
 
 target_include_directories(WarehouseModels PUBLIC
