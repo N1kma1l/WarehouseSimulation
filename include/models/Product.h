@@ -35,16 +35,20 @@ class Product {
     double getStartPrice() const {
         return start_price_;
     }
+    // Геттер скидки на уцененный Товар (в процентах)
+    double getDiscount() const {
+        return discount_;
+    }
+    // Геттер срока годности Товара
+    int getExprationDate() const {
+        return expiration_date_;
+    }
     // Геттер текущей цены товара
     double getPrice() const;
     // Геттер количества дней до окончания срока годности Товара
     int getDaysUntilExpiration() const;
-    // Геттер срока годности Товара
-    int getExprationDate() const;
     // Геттер количества дней на складе Товара
     int getDaysInStock() const;
-    // Геттер скидки на уцененный Товар (в процентах)
-    double getDiscount() const;
     
     // Сеттер размера скидки на уценненый Товар (в процентах)
     void setDiscount(double percent);
@@ -71,7 +75,7 @@ class Product {
     double start_price_; // Начальная цена за упаковку Товара
     bool is_discounted_; // Флаг применения скидки к Товару
     double discount_; // Размер скидки на Товар в процентах
-    int expiration_date_; // Срок годности Товара
+    int expiration_date_; // Срок годности Товара в днях
 };
 
 #endif
