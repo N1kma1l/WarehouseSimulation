@@ -1,5 +1,6 @@
 add_library(WarehouseCore
     Config.cpp
+    Warehouse.cpp
 )
 
 target_include_directories(WarehouseCore PUBLIC

@@ -12,4 +12,6 @@ endif()
 
 add_subdirectory(src/models)
 add_subdirectory(src/core)
+add_subdirectory(src/utils)
+add_subdirectory(src/services)
 add_subdirectory(src)
