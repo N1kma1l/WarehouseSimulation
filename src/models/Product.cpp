@@ -30,6 +30,7 @@ int Product::getDaysInStock(const int now_date) const {
 
 void Product::setDiscount(double percent) {
     discount_ = percent;
+    is_discounted_ = true;
 }
 
 bool Product::reduceStock(int packs) {
