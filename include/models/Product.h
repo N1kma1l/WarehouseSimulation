@@ -2,14 +2,13 @@
 #define PRODUCT_H
 
 #include <string>
-#include <chrono>
 
 // Класс Товаров
 class Product {
 
     public:
-    Product(int id, const std::string& name, int pack_size, int max_stock,
-        double price, const std::chrono::system_clock::time_point& expDate);
+    Product(const int id, const std::string& name, const int pack_size, 
+        const int max_stock, const double price, const int arrival_day);
 
     // Геттер id Товара
     int getId() const {
@@ -42,6 +41,10 @@ class Product {
     // Геттер срока годности Товара
     int getExprationDate() const {
         return expiration_date_;
+    }
+    // Геттер даты поступления Товара
+    int getArrivalDate() const {
+        return arrival_day_;
     }
     // Геттер текущей цены товара
     double getPrice() const;
@@ -76,6 +79,7 @@ class Product {
     bool is_discounted_; // Флаг применения скидки к Товару
     double discount_; // Размер скидки на Товар в процентах
     int expiration_date_; // Срок годности Товара в днях
+    int arrival_day_; // День поступления Товара на склад
 };
 
 #endif
