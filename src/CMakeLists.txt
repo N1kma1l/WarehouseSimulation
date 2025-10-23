@@ -1,7 +1,8 @@
 add_executable(WarehouseSimulation
-    models/Product.cpp
-    models/Order.cpp
+    main.cpp
 )
+
+target_link_libraries(WarehouseSimulation WarehouseModels)
 
 set_target_properties(WarehouseSimulation PROPERTIES
     CXX_STANDARD 17

@@ -1,9 +1,9 @@
-#include "Product.h"
+#include "models/Product.h"
 
 #include <iostream>
 #include <iomanip>
 
-Product::Product(int id, std::string& name, int pack_size, 
+Product::Product(int id, const std::string& name, int pack_size, 
         int max_stock, double price, int expiration_date,
         int arrival_day) : 
         id_(id), name_(name), pack_size_(pack_size), max_stock_(max_stock),
@@ -53,7 +53,7 @@ bool Product::needsDiscount(const int now_date) const {
 }
 
 bool Product::isExpired(const int now_date) const {
-    return getDaysUntilExpiration(now_date) > 0;
+    return getDaysUntilExpiration(now_date) <= 0;
 }
 
 bool Product::isDiscounted() const {

@@ -7,7 +7,7 @@
 class Product {
 
     public:
-    Product(int id, std::string& name, int pack_size, 
+    Product(int id, const std::string& name, int pack_size, 
         int max_stock, double price, int expiration_date,
         int arrival_day);
 
