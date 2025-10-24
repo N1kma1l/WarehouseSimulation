@@ -1,6 +1,9 @@
 add_library(WarehouseCore
+    DataManager.cpp
     Config.cpp
+    Simulation.cpp
     Warehouse.cpp
+    WarehouseController.cpp
 )
 
 target_include_directories(WarehouseCore PUBLIC

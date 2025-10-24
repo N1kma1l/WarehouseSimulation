@@ -1,6 +1,7 @@
 add_library(WarehouseServices
     DiscountService.cpp
     ExpirationService.cpp
+    OrderGenerator.cpp
     OrderProcessor.cpp
     StatisticsService.cpp
     SupplierService.cpp
