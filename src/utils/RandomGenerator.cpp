@@ -22,12 +22,3 @@ double RandomGenerator::getProbability() {
 bool RandomGenerator::checkProbability(double probability) {
     return getProbability() < probability;
 }
-
-template<typename T>
-const T& RandomGenerator::getRandomElement(const std::vector<T>& elements) {
-    if (elements.empty()) {
-        throw std::invalid_argument("Empty vector in getRandomElement");
-    }
-    int index = getInt(0, elements.size() - 1);
-    return elements[index];
-}

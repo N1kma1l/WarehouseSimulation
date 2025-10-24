@@ -2,6 +2,8 @@
 #define RANDOMGENERATOR_H
 
 #include <random>
+#include <vector>
+#include <stdexcept>
 
 class RandomGenerator {
     public:
@@ -17,9 +19,16 @@ class RandomGenerator {
     double getProbability();
     // Метод проверки события с заданной вероятностью
     bool checkProbability(double probability);
+    
     // Метод выбора случайного элемента из вектора
     template<typename T>
-    const T& getRandomElement(const std::vector<T>& elements);
+    const T& getRandomElement(const std::vector<T>& elements) {
+        if (elements.empty()) {
+            throw std::invalid_argument("Empty vector in getRandomElement");
+        }
+        int index = getInt(0, elements.size() - 1);
+        return elements[index];
+    }
 
     private:
     unsigned int seed_;
