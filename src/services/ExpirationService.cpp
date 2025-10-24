@@ -24,4 +24,7 @@ int ExpirationService::getExpirationUrgencyLevel(int days_until_expiration) cons
 }
 
 void ExpirationService::resetDailyExpirationStatistics() {
+    daily_expired_products_ = 0;
+    daily_expiration_losses_ = 0.0;
+    daily_expiration_checks_ = 0;
 }

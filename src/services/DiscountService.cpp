@@ -6,7 +6,10 @@ DiscountService::DiscountService() :
     days_before_expiration_for_discount_(3),
     total_discounted_products_(0),
     total_discount_revenue_(0.0),
-    total_discount_loss_(0.0) {}
+    total_discount_loss_(0.0),
+    daily_discounted_products_(0),
+    daily_discount_revenue_(0.0),
+    daily_discount_loss_(0.0) {}
 
 double DiscountService::calculateDiscountPercent(int days_until_expiration) const {
     if (days_until_expiration <= 1) {
@@ -24,4 +27,7 @@ bool DiscountService::shouldApplyDiscount(int days_until_expiration) const {
 }
 
 void DiscountService::resetDailyDiscountStatistics() {
+    daily_discounted_products_ = 0;
+    daily_discount_revenue_ = 0.0;
+    daily_discount_loss_ = 0.0;
 }

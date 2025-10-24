@@ -16,7 +16,11 @@ StatisticsService::StatisticsService() :
     total_products_expired_(0),
     total_shipments_created_(0),
     total_supplier_requests_(0),
-    total_supplier_deliveries_(0) {}
+    total_supplier_deliveries_(0),
+    daily_revenue_(0.0),
+    daily_discount_loss_(0.0),
+    daily_expiration_loss_(0.0),
+    daily_products_sold_(0) {}
 
 double StatisticsService::getOrderFulfillmentRate() const {
     if (total_orders_processed_ == 0) return 0.0;
@@ -37,6 +41,10 @@ double StatisticsService::getProfit() const {
 }
 
 void StatisticsService::resetDailyStatistics() {
+    daily_revenue_ = 0.0;
+    daily_discount_loss_ = 0.0;
+    daily_expiration_loss_ = 0.0;
+    daily_products_sold_ = 0;
 }
 
 void StatisticsService::printSummary() const {

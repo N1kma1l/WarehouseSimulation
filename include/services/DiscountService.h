@@ -30,6 +30,18 @@ class DiscountService {
     double getTotalDiscountLoss() const {
         return total_discount_loss_;
     }
+    // Геттер дневного количества уцененных товаров
+    int getDailyDiscountedProducts() const {
+        return daily_discounted_products_;
+    }
+    // Геттер дневной выручки от уцененных товаров
+    double getDailyDiscountRevenue() const {
+        return daily_discount_revenue_;
+    }
+    // Геттер дневных потерь от уценки
+    double getDailyDiscountLoss() const {
+        return daily_discount_loss_;
+    }
 
     // Сеттер базового процента уценки
     void setBaseDiscountPercent(double percent) {
@@ -55,18 +67,33 @@ class DiscountService {
     void setTotalDiscountLoss(double loss) {
         total_discount_loss_ = loss;
     }
+    // Сеттер дневного количества уцененных товаров
+    void setDailyDiscountedProducts(int count) {
+        daily_discounted_products_ = count;
+    }
+    // Сеттер дневной выручки от уцененных товаров
+    void setDailyDiscountRevenue(double revenue) {
+        daily_discount_revenue_ = revenue;
+    }
+    // Сеттер дневных потерь от уценки
+    void setDailyDiscountLoss(double loss) {
+        daily_discount_loss_ = loss;
+    }
 
     // Метод увеличения счетчика уцененных товаров
     void incrementDiscountedProducts() {
         total_discounted_products_++;
+        daily_discounted_products_++;
     }
     // Метод добавления выручки от уценки
     void addDiscountRevenue(double revenue) {
         total_discount_revenue_ += revenue;
+        daily_discount_revenue_ += revenue;
     }
     // Метод добавления потерь от уценки
     void addDiscountLoss(double loss) {
         total_discount_loss_ += loss;
+        daily_discount_loss_ += loss;
     }
     
     // Метод расчета процента уценки на основе дней до истечения срока
@@ -77,13 +104,16 @@ class DiscountService {
     void resetDailyDiscountStatistics();
 
     private:
-    double base_discount_percent_;          // Базовый процент уценки
-    double max_discount_percent_;           // Максимальный процент уценки
+    double base_discount_percent_; // Базовый процент уценки
+    double max_discount_percent_; // Максимальный процент уценки
     int days_before_expiration_for_discount_; // За сколько дней до истечения срока делать уценку
     
-    int total_discounted_products_;         // Общее количество уцененных товаров
-    double total_discount_revenue_;         // Общая выручка от уцененных товаров
-    double total_discount_loss_;            // Общие потери от уценки
+    int total_discounted_products_; // Общее количество уцененных товаров
+    double total_discount_revenue_; // Общая выручка от уцененных товаров
+    double total_discount_loss_; // Общие потери от уценки
+    int daily_discounted_products_; // Дневное количество уцененных товаров
+    double daily_discount_revenue_; // Дневная выручка от уцененных товаров
+    double daily_discount_loss_; // Дневные потери от уценки
 };
 
 #endif

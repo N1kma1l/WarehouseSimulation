@@ -62,6 +62,22 @@ class StatisticsService {
     int getTotalSupplierDeliveries() const {
         return total_supplier_deliveries_;
     }
+    // Геттер дневной выручки
+    double getDailyRevenue() const {
+        return daily_revenue_;
+    }
+    // Геттер дневных потерь от уценки
+    double getDailyDiscountLoss() const {
+        return daily_discount_loss_;
+    }
+    // Геттер дневных потерь от списания
+    double getDailyExpirationLoss() const {
+        return daily_expiration_loss_;
+    }
+    // Геттер дневного количества проданных товаров
+    int getDailyProductsSold() const {
+        return daily_products_sold_;
+    }
     
     // Сеттер общего количества дней работы
     void setTotalDays(int days) {
@@ -119,6 +135,22 @@ class StatisticsService {
     void setTotalSupplierDeliveries(int count) {
         total_supplier_deliveries_ = count;
     }
+    // Сеттер дневной выручки
+    void setDailyRevenue(double revenue) {
+        daily_revenue_ = revenue;
+    }
+    // Сеттер дневных потерь от уценки
+    void setDailyDiscountLoss(double loss) {
+        daily_discount_loss_ = loss;
+    }
+    // Сеттер дневных потерь от списания
+    void setDailyExpirationLoss(double loss) {
+        daily_expiration_loss_ = loss;
+    }
+    // Сеттер дневного количества проданных товаров
+    void setDailyProductsSold(int count) {
+        daily_products_sold_ = count;
+    }
         
     // Метод увеличения счетчика дней работы
     void incrementTotalDays() {
@@ -143,18 +175,22 @@ class StatisticsService {
     // Метод добавления выручки
     void addRevenue(double amount) {
         total_revenue_ += amount;
+        daily_revenue_ += amount;
     }
     // Метод добавления потерь от уценки
     void addDiscountLoss(double loss) {
         total_discount_loss_ += loss;
+        daily_discount_loss_ += loss;
     }
     // Метод добавления потерь от списания
     void addExpirationLoss(double loss) {
         total_expiration_loss_ += loss;
+        daily_expiration_loss_ += loss;
     }
     // Метод добавления проданных товаров
     void addProductsSold(int count) {
         total_products_sold_ += count;
+        daily_products_sold_ += count;
     }
     // Метод увеличения счетчика уцененных товаров
     void incrementProductsDiscounted() {
@@ -205,6 +241,10 @@ class StatisticsService {
     int total_shipments_created_; // Общее количество созданных перевозок
     int total_supplier_requests_; // Общее количество заявок поставщикам
     int total_supplier_deliveries_; // Общее количество выполненных поставок
+    double daily_revenue_; // Дневная выручка
+    double daily_discount_loss_; // Дневные потери от уценки
+    double daily_expiration_loss_; // Дневные потери от списания
+    int daily_products_sold_; // Дневное количество проданных 
 };
 
 #endif
