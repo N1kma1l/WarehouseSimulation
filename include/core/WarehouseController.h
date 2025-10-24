@@ -8,6 +8,8 @@
 #include "services/SupplierService.h"
 #include "services/StatisticsService.h"
 #include "services/OrderGenerator.h"
+#include "models/Order.h"
+#include "models/Product.h"
 
 // Главный контроллер управления операциями склада
 class WarehouseController {
@@ -99,8 +101,14 @@ class WarehouseController {
     void initialize();
     // Метод обработки одного дня работы склада
     void processDay(int day);
+
     // Метод обработки заказов на день
     void processDailyOrders(int day);
+    // Метод обработки заказов для конкретного магазина
+    void processStoreOrders(int store_id, int day);
+    // Метод обработки одной позиции заказа
+    void processOrderItem(Order& order, Product& product, int requested_quantity);
+    
     // Метод применения уценок к товарам
     void applyDiscounts(int day);
     // Метод контроля сроков годности
