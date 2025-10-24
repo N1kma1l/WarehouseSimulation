@@ -1,6 +1,8 @@
 #ifndef SIMULATION_H
 #define SIMULATION_H
 
+#include "core/WarehouseController.h"
+
 // Главный класс симуляции работы склада
 class Simulation {
     public:
@@ -33,6 +35,14 @@ class Simulation {
     // Геттер скорости симуляции (итераций в секунду)
     int getSimulationSpeed() const {
         return simulation_speed_;
+    }
+    // Геттер ссылки на контроллер склада
+    WarehouseController& getWarehouseController() {
+        return warehouse_controller_;
+    }
+    // Геттер константной ссылки на контроллер склада
+    const WarehouseController& getWarehouseController() const {
+        return warehouse_controller_;
     }
 
     // Сеттер общего количества дней симуляции
@@ -125,6 +135,7 @@ class Simulation {
     int iterations_completed_; // Количество выполненных итераций
     bool is_auto_mode_; // Флаг автоматического режима
     int simulation_speed_; // Скорость симуляции (итераций в секунду)
+    WarehouseController warehouse_controller_; // Контроллер склада
 };
 
 #endif
