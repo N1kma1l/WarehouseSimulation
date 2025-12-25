@@ -1,4 +1,4 @@
-// backend.cpp
+
 #include <algorithm>
 #include <cmath>
 #include <cstdint>
@@ -14,9 +14,6 @@
 
 namespace ws {
 
-// -----------------------------
-// Public POD structs (используются и в frontend.cpp)
-// -----------------------------
 struct ProductConfig {
     std::string name = "Product";
     std::string unitName = "pcs";
@@ -76,9 +73,9 @@ struct Anim {
     int payload = 0;
 };
 
-// -----------------------------
-// Helpers
-// -----------------------------
+
+
+
 static float Clamp01(float x) { return (x < 0.f) ? 0.f : (x > 1.f ? 1.f : x); }
 
 template <class T>
@@ -133,9 +130,9 @@ static void ClampProduct(ProductConfig& p) {
     p.reorderAmount = std::clamp(p.reorderAmount, 0, p.capacityPackages);
 }
 
-// -----------------------------
-// Internal simulation model
-// -----------------------------
+
+
+
 struct Batch {
     int packages = 0;
     int daysLeft = 0;
@@ -166,7 +163,7 @@ struct Order {
 struct Shipment {
     int day = 0;
     int shopId = -1;
-    std::vector<std::pair<int,int>> items; // pid, packages
+    std::vector<std::pair<int,int>> items; 
 };
 
 struct Warehouse {
@@ -300,9 +297,9 @@ struct Warehouse {
     }
 };
 
-// -----------------------------
-// Simulator implementation
-// -----------------------------
+
+
+
 struct SimulatorImpl {
     SimConfig cfg{};
     std::mt19937 rng{12345};
@@ -513,7 +510,7 @@ struct SimulatorImpl {
     void AdvanceDay() {
         if (day >= cfg.N) return;
 
-        // важная страховка: всегда держим продукты валидными
+        
         ClampAllProducts();
 
         day += 1;
@@ -632,9 +629,9 @@ struct SimulatorImpl {
     }
 };
 
-// -----------------------------
-// Opaque handle + API
-// -----------------------------
+
+
+
 struct SimulatorHandle {
     SimulatorImpl sim;
     explicit SimulatorHandle(const SimConfig& c) : sim(c) {}
@@ -699,7 +696,7 @@ void GetProductConfigs(const SimulatorHandle* h, std::vector<ProductConfig>& out
 
 void SetProductConfigs(SimulatorHandle* h, const std::vector<ProductConfig>& in) {
     if (!h) return;
-    if ((int)in.size() != h->sim.cfg.K) return; // K менять только через Reset
+    if ((int)in.size() != h->sim.cfg.K) return; 
     h->sim.products = in;
     h->sim.ClampAllProducts();
 }
@@ -746,4 +743,4 @@ void GetDailyAnims(const SimulatorHandle* h, std::vector<Anim>& out) {
     out = h->sim.dailyAnims;
 }
 
-} // namespace ws
+} 
